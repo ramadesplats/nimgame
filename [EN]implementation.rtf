@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc
+
+\f0\fs24 \cf0 ##### Nim game Rules #####\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+##### Initialisation #####\
+\
+Two players game.\
+5 stack of a random number picked between 1 and 10 matchsticks.\
+\
+##### Important parameters #####\
+\
+During a turn, you are allowed to take int  matchstick 	as you want on a line referenced by an int.\
+type move = int * int\
+\
+Each state of the game is a matrix of int representing a certain number of int matchstick on different lines referenced by an int.\
+type state = int matrix * player\
+\
+type result = Win of player\
+\
+##### Important functions #####\
+\
+let initial = create a matrix of 5 lines/10columns. For each line, there is a random number of matchstick.\
+In the matrix, 1 means theres is a match and 0 the contrary.\
+\
+let turn = indicate which player must play now.\
+\
+let is_valid = indicate if a move is valid in the current state.\
+\
+let play = play a move.\
+\
+let all_moves = return the list of moves that can be played in the current state.\
+\
+let result = return the result of the game or None if the result is not know yet.\
+\
+##### More informations #####\
+\
+For more informations, feel free to look at the interface files or you can send me an email at desplatsr@gmail.com}
