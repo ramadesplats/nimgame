@@ -25,16 +25,16 @@ let readmove s =
 * Not always the same player that start the game
 *)
 let initial =
-	let a = create_matrix 5 10 1 in 
-	Printf.printf "%s%!" (matrix2s a string_of_int);
+	let a = ref (create_matrix 5 10 1) in 
+	Printf.printf "%s%!" (matrix2s !a string_of_int);
 		for i=0 to 4 do 
 			let rand = Random.int 10 in
 			Printf.printf "rand : %d%!" rand;
-			a=clean a i rand;
-			Printf.printf "%s%!" (matrix2s a string_of_int);
+			a:=clean !a i rand;
+			Printf.printf "%s%!" (matrix2s !a string_of_int);
 		done; 
 	let b = Random.int 10 in
-		if b>= 5 then (a,Human) else (a,Comput);;
+		if b>= 5 then (!a,Human) else (!a,Comput);;
 
 let turn = function 
 	| (_,b) -> b;;
