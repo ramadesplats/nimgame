@@ -30,7 +30,7 @@ let initial =
 		for i=0 to 4 do 
 			let rand = Random.int 10 in
 			Printf.printf "rand : %d%!" rand;
-			a=clean a i rand;
+			clean a i rand;
 			Printf.printf "%s%!" (matrix2s a string_of_int);
 		done; 
 	let b = Random.int 10 in
