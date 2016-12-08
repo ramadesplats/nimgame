@@ -4,7 +4,7 @@ open Game
 (* Interactively ask for the player's move. 
  * Returns Some move, or None when the move is invalid. *)
 let ask_move state =
-  Printf.printf "  => Your move (should look like (stack,nbofmatchstick))? %!" ;  
+  Printf.printf "  => Your move ? (should look like (stack,nbofmatchstick)) %!" ;  
   let line = read_line () in
 
   match readmove line with

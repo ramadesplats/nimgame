@@ -22,9 +22,14 @@ let create_matrix n m vale =
     done;
     result;;
 
+let count_ones row =
+  Array.fold_left (fun c x -> if x=1 then c+1 else c) 0 row;;
+
 let clean m l num =
-  let n=10-num in 
-    for i=n to Array.length m -1 do
+  let n=(count_ones m.(l))-num in 
+  Printf.printf "l = %d num=%d\n%!" l num;
+  Printf.printf "for i = %d to %d\n%!" n (Array.length m.(l) -1) ; 
+    for i=n to Array.length m.(l) -1 do
       m.(l).(i) <- 0
     done; 
     m;;
@@ -32,9 +37,6 @@ let clean m l num =
 (*let count m i =
   let ret=Array.fold_left (fun x y -> if y=1 then x+1 else x) 0 (m.(i)) in 
   ret;;*)
-
-let count_ones row =
-  Array.fold_left (fun c x -> if x=1 then c+1 else c) 0 row;;
 
 let countall mat k =
   Array.mapi (fun i row -> if i = k then count_ones row else count_ones row) mat

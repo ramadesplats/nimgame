@@ -26,12 +26,12 @@
 # Target: game.cmx, tags: { compile, extension:cmx, extension:ml, file:game.cmx, file:game.ml, implem, native, ocaml, quiet }
 /Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game.cmx game.ml
 + /Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game.cmx game.ml
-File "game.ml", line 33, characters 3-17:
+File "game.ml", line 31, characters 3-20:
 Warning 10: this expression should have type unit.
 # Target: game_ia.cmx, tags: { compile, extension:cmx, extension:ml, file:game_ia.cmx, file:game_ia.ml, implem, native, ocaml, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game_ia.cmx game_ia.ml # cached
+/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game_ia.cmx game_ia.ml
 # Target: gameplay.cmx, tags: { compile, extension:cmx, extension:ml, file:gameplay.cmx, file:gameplay.ml, implem, native, ocaml, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o gameplay.cmx gameplay.ml # cached
+/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o gameplay.cmx gameplay.ml
 # Target: gameplay.native, tags: { dont_link_with, extension:native, file:gameplay.native, link, native, ocaml, program, quiet }
 /Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native
 # Compilation successful.
