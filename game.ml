@@ -67,7 +67,7 @@ let all_moves (mat, _) =
   |> Array.to_list |> List.filter (fun (_, c) -> c != 0)
 
 let result (mat,player)=
-	if (countall mat 0)=0 then Some(Win(player)) else None;;
+	if (countall mat 0)=0 then Some(Win(next(player))) else None;;
 
 (* This type was given in game.mli.
  * We have to repeat it here. *)

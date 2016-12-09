@@ -27,8 +27,8 @@ let count_ones row =
 
 let clean m l num =
   let n=(count_ones m.(l))-num in 
-  Printf.printf "l = %d num=%d\n%!" l num;
-  Printf.printf "for i = %d to %d\n%!" n (Array.length m.(l) -1) ; 
+  (*Printf.printf "l = %d num=%d\n%!" l num;
+  Printf.printf "for i = %d to %d\n%!" n (Array.length m.(l) -1) ; *)
     for i=n to Array.length m.(l) -1 do
       m.(l).(i) <- 0
     done; 

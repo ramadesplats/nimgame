@@ -30,7 +30,7 @@ let initial =
 		for i=0 to 4 do 
 			let rand = Random.int 10 in
 			a=clean a i rand;
-		done; 
+		done; 	
 	let b = Random.int 10 in
 		if b>= 5 then (a,Human) else (a,Comput);;
 
@@ -45,12 +45,6 @@ let is_valid (a,_) (b,c) =
 	let count=Array.fold_left (fun x y -> if y=1 then x+1 else x) 0 (a.(b)) in
 	(*Printf.printf "count : %d%!\n" count;*)
 	count >= c;;
-
-(*let is_valid s m =
-	match s with 
-		|(a,_)->match m with 
-		|(b,c)-> let count=Array.fold_left (fun x y -> if y=1 then x+1 else x) 0 (a.(b)) in 
-		count>=c;;*)
 
 (*state,move*)
 let play s m =
@@ -73,7 +67,7 @@ let all_moves (mat, _) =
   |> Array.to_list |> List.filter (fun (_, c) -> c != 0)
 
 let result (mat,player)=
-	if (countall mat 0)=0 then Some(Win(player)) else None;;
+	if (countall mat 0)=0 then Some(Win(next(player))) else None;;
 
 (* This type was given in game.mli.
  * We have to repeat it here. *)
