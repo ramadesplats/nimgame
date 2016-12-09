@@ -39,6 +39,15 @@ val is_valid: state -> move -> bool
 (* Play a move *)
 val play: state -> move -> state
 
+(*Reverse a list*)
+val rev : 'a list -> 'a list
+
+val separated_moves : move -> move list
+
+val array_move : move list -> move list
+
+val count_array : int matrix -> move list
+
 (* Returns the list of moves that can be played in the current state, or any superset of it.
  * e.g. which line has matchsticks to be removed and how many. 
  * Moves will be filtered by is_valid anyway. *)

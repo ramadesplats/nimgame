@@ -55,4 +55,4 @@ let rec run with_ia state =
     run with_ia state'
 
 
-let () = run true initial (*pas d'IA*)
+let () = run true initial (*false : pas d'IA*)

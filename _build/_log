@@ -16,22 +16,19 @@
 # Target: gameplay.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:gameplay.cmo, file:gameplay.ml, implem, ocaml, quiet }
 /Users/ramalechat/.opam/4.01.0/bin/ocamlc.opt -c -o gameplay.cmo gameplay.ml # cached
 # Target: game.ml.depends, tags: { extension:ml, file:game.ml, ocaml, ocamldep, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamldep.opt -modules game.ml > game.ml.depends
+/Users/ramalechat/.opam/4.01.0/bin/ocamldep.opt -modules game.ml > game.ml.depends # cached
 # Target: gamebase.ml.depends, tags: { extension:ml, file:gamebase.ml, ocaml, ocamldep, quiet }
 /Users/ramalechat/.opam/4.01.0/bin/ocamldep.opt -modules gamebase.ml > gamebase.ml.depends # cached
 # Target: gamebase.cmx, tags: { compile, extension:cmx, extension:ml, file:gamebase.cmx, file:gamebase.ml, implem, native, ocaml, quiet }
 /Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o gamebase.cmx gamebase.ml # cached
+# Target: game.cmx, tags: { compile, extension:cmx, extension:ml, file:game.cmx, file:game.ml, implem, native, ocaml, quiet }
+/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game.cmx game.ml # cached
 # Target: game_ia.ml.depends, tags: { extension:ml, file:game_ia.ml, ocaml, ocamldep, quiet }
 /Users/ramalechat/.opam/4.01.0/bin/ocamldep.opt -modules game_ia.ml > game_ia.ml.depends # cached
-# Target: game.cmx, tags: { compile, extension:cmx, extension:ml, file:game.cmx, file:game.ml, implem, native, ocaml, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game.cmx game.ml
-+ /Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game.cmx game.ml
-File "game.ml", line 32, characters 3-20:
-Warning 10: this expression should have type unit.
 # Target: game_ia.cmx, tags: { compile, extension:cmx, extension:ml, file:game_ia.cmx, file:game_ia.ml, implem, native, ocaml, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game_ia.cmx game_ia.ml
+/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o game_ia.cmx game_ia.ml # cached
 # Target: gameplay.cmx, tags: { compile, extension:cmx, extension:ml, file:gameplay.cmx, file:gameplay.ml, implem, native, ocaml, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o gameplay.cmx gameplay.ml
+/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt -c -o gameplay.cmx gameplay.ml # cached
 # Target: gameplay.native, tags: { dont_link_with, extension:native, file:gameplay.native, link, native, ocaml, program, quiet }
-/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native
+/Users/ramalechat/.opam/4.01.0/bin/ocamlopt.opt gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native # cached
 # Compilation successful.

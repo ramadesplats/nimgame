@@ -62,9 +62,37 @@ let play s m =
 	match s with 
 	|(a,_)->Gamebase.clear[(0,Gamebase.count a 0);(1,Gamebase.count a 1);(2,Gamebase.count a 2);(3,Gamebase.count a 3);(4,Gamebase.count a 4)];;*)
 
-let all_moves (mat, _) =
+
+(*all moves à augmenter, pas considerer que le max par ligne mais toutes les combinaisons*)
+(*let all_moves (mat, _) =
   Array.mapi (fun i row -> (i, count_ones row)) mat
-  |> Array.to_list |> List.filter (fun (_, c) -> c != 0)
+  |> Array.to_list |> List.filter (fun (_, c) -> c != 0)*)
+
+let rec rev l =
+	let rec aux acc = function
+		|[]->acc
+		|a::b->aux (a::acc) b
+	in aux [] l;; 
+
+let separated_moves (a,b)=
+	let rec aux count acc = 
+		match count with
+			|0->((a,count)::acc)
+			|_->aux (count-1) ((a,count)::acc) in 
+	aux b [];;
+
+let array_move l =
+	let rec aux acc = function
+		|[]->acc
+		|(a,b)::c->aux (List.append acc (separated_moves(a,b)) ) c in 
+	aux [] l;;
+
+let count_array mat =
+	Array.mapi (fun i row -> (i, count_ones row)) mat
+	|> Array.to_list |> List.filter (fun (_, c) -> c != 0);;
+
+let all_moves (mat, _) =
+	array_move (count_array mat);;
 
 let result (mat,player)=
 	if (countall mat 0)=0 then Some(Win(next(player))) else None;;
