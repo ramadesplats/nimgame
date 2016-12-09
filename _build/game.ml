@@ -26,13 +26,13 @@ let readmove s =
 *)
 let initial =
 	let a = create_matrix 5 10 1 in 
+		Random.self_init ();
 		for i=0 to 4 do 
 			let rand = Random.int 10 in
 			a=clean a i rand;
 		done; 
-	(a,Human);;
-	(*let b = Random.int 10 in
-		if b>= 5 then (a,Human) else (a,Comput);;*)
+	let b = Random.int 10 in
+		if b>= 5 then (a,Human) else (a,Comput);;
 
 let turn = function 
 	| (_,b) -> b;;
@@ -41,7 +41,7 @@ let turn = function
 
 let is_valid (a,_) (b,c) =
 	(*Printf.printf "a : %s b : %d c : %d%!\n" (matrix2s a string_of_int) b c;*)
-	b<4 && b>=0 && c<=10 && c>0 &&
+	b<=4 && b>=0 && c<=10 && c>0 &&
 	let count=Array.fold_left (fun x y -> if y=1 then x+1 else x) 0 (a.(b)) in
 	(*Printf.printf "count : %d%!\n" count;*)
 	count >= c;;
