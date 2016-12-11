@@ -31,7 +31,7 @@ let initial =
 			let rand = Random.int 10 in
 			a=clean a i rand;
 		done; 	
-	let b = Random.int 10 in
+	let b = Random.int 10 in 
 		if b>= 5 then (a,Human) else (a,Comput);;
 
 let turn = function 
