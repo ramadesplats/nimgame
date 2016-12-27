@@ -1,6 +1,9 @@
 open Game
 open Gamebase
 
+open Functory.Network
+open Functory.Network.Same
+
 let memory = Hashtbl.create 100000;;
 
 (* Stupid IA: it take the first possible valid move.
@@ -11,9 +14,8 @@ let best_move state =
     let player = turn state in
     (Some m, worst_for player);; *)
 
-
-
-(*let rec best_move state =
+(*First version of best_move*)
+let rec best_move state =
   match result state with  
     |Some x -> (None,x)
     |_ -> let l = List.filter (is_valid state) (all_moves state) in 
@@ -27,9 +29,10 @@ let best_move state =
                   |Equal -> loop b a best_r
                   |_ ->  (a,d)
       in let (x,y)= loop l (List.hd l) (worst_for (turn state))in
-      (Some x,y);;*)
+      (Some x,y);;
 
 
+(*fin the best move and the best result in a list*)
 let find_max p l =
   (*mm=max move et mr = max result*)
   let rec aux p l (mm,mr) =
@@ -44,8 +47,8 @@ let find_max p l =
   aux p l (List.hd l)
 ;;
 
-
-let rec best_move state =
+(*best_move version using a cache*)
+let rec best_move_cache state =
   if Hashtbl.mem memory state then Hashtbl.find memory state
   else
     let lm = all_moves state (* les mouvements possibles *)
@@ -72,3 +75,34 @@ let rec best_move state =
         Hashtbl.add memory state woup;
         woup
 ;;
+
+
+(*lighter version of find max for parallelized version of best_move*)
+let bestresult player a b = match compare player (snd a) (snd b) with
+  | Greater -> b
+  | _ -> a
+
+(*best_move version using the functory module*)
+let best_move_parallelized state = 
+  match result state with
+  | Some(x) -> None
+  | None ->
+    let moves = List.filter (is_valid state) (all_moves state) in
+    let zemap = fun move -> Some(move, snd (best_move (play state move))) in
+    let zefold = fun a b -> match (a, b) with
+      | None, _ -> b
+      | _, None -> a
+      | Some a_, Some b_ -> Some(bestresult (turn state) a_ b_)
+    in
+    match map_fold_ac ~f:zemap ~fold:zefold None moves with
+      | None -> None
+      | Some(move, result) -> Some(move)
+
+(*map : ('a -> 'b) -> 'a list -> 'b list
+
+fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    --> List.fold_left f a [b1; ...; bn] is f (... (f (f a b1) b2) ...) bn.
+
+map_fold_ac : f:('a -> 'b) -> fold:('b -> 'b -> 'b) -> 'b -> 'a list -> 'b*)
+
+

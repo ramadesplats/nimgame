@@ -1,1 +1,1 @@
-game_ia.ml: Game Gamebase Hashtbl List
+game_ia.ml: Functory Game Gamebase Hashtbl List
