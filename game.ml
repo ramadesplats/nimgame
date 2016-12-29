@@ -23,11 +23,13 @@ let readmove s =
 
 (* Create a game with random number of matchstick for each stack
 * Not always the same player that start the game
+* let a = create_matrix 5 10 1 in
 *)
 let initial =
-	let a = create_matrix 5 10 1 in 
+	let a = create_matrix 2 10 1 in 
+	(* use only 2 stacks for demonstration purpose*)
 		Random.self_init ();
-		for i=0 to 4 do 
+		for i=0 to 1 do 
 			let rand = Random.int 10 in
 			a=clean a i rand;
 		done; 	
@@ -102,6 +104,13 @@ let compare p r1 r2 =
 	| Human, Win Human, Win Comput | Comput, Win Comput, Win Human -> Smaller
 	| Human, Win Comput, Win Human | Comput, Win Human, Win Comput -> Greater
 	| _,_,_-> Equal;;
+
+(*return the other state for a player*)
+
+let other_player p =
+	match p with 
+	|Human -> Comput
+	|Comput -> Human;;
 
 (*return the worst state for a player*)
 let worst_for p = 

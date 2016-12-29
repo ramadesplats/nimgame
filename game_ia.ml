@@ -6,6 +6,14 @@ open Functory.Network.Same
 
 let memory = Hashtbl.create 100000;;
 
+(*convert a line into a string*)
+let rec line2s= function 
+  | [] -> Printf.printf "\n%!"
+  | hd::tl -> let (a,b)=hd in 
+        match a with 
+          | Some (c) -> Printf.printf " %s - " (move2s c); line2s tl
+          | None -> Printf.printf " nothing "; line2s tl
+
 (* Stupid IA: it take the first possible valid move.
 let best_move state =
   match List.filter (is_valid state) (all_moves state) with
@@ -73,14 +81,20 @@ let rec best_move_cache state =
       | None -> 
         let woup = aux state (List.filter (fun a -> is_valid state a) lm) [] in
         Hashtbl.add memory state woup;
-        woup
-;;
+        woup;;
+
+let rec foldb acc x =
+  match x with 
+    |[]->acc
+    |[res]->res::acc
+    |a::b->a::foldb acc b;;
 
 
 (*lighter version of find max for parallelized version of best_move*)
-let bestresult player a b = match compare player (snd a) (snd b) with
+let bestresult player a b = 
+  match compare player (snd a) (snd b) with
   | Greater -> b
-  | _ -> a
+  | _ -> a;;
 
 (*best_move version using the functory module*)
 let best_move_parallelized state = 
@@ -96,9 +110,21 @@ let best_move_parallelized state =
     in
     match map_fold_ac ~f:zemap ~fold:zefold None moves with
       | None -> None
-      | Some(move, result) -> Some(move)
+      | Some(move, result) -> Printf.printf "######SOLUTION-FOUND######\n%!" ;
+      Unix.select [] [] [] 1.0  ; Some(move)
+
 
 (*map : ('a -> 'b) -> 'a list -> 'b list
+
+let zefold = fun a b -> match (a, b) with
+      | None, _ -> b
+      | _, None -> a
+      | Some a_, Some b_ -> Some(bestresult (turn state) a_ b_)
+
+let rec aux = function 
+    | [] -> []
+    | mv :: tl -> (play state mv)::(aux tl)           
+  in 
 
 fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
     --> List.fold_left f a [b1; ...; bn] is f (... (f (f a b1) b2) ...) bn.

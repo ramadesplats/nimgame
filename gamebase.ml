@@ -61,6 +61,7 @@ let find_cell m p =
     
   with Found (r,c) -> Some (r,c)
 
+
 let line2s v2s line = Array.fold_left (fun s v -> s ^ v2s v ^ "|") "|" line
 
 let linesep = "-------\n"

@@ -1,6 +1,6 @@
 ### Starting build.
 # Target: gameplay.ml.depends, tags: { debug, extension:ml, file:gameplay.ml, ocaml, ocamldep, package(unix,functory), quiet, traverse }
-ocamlfind ocamldep -package unix,functory -modules gameplay.ml > gameplay.ml.depends
+ocamlfind ocamldep -package unix,functory -modules gameplay.ml > gameplay.ml.depends # cached
 # Target: game.mli.depends, tags: { debug, extension:mli, file:game.mli, ocaml, ocamldep, package(unix,functory), quiet, traverse }
 ocamlfind ocamldep -package unix,functory -modules game.mli > game.mli.depends # cached
 # Target: gamebase.mli.depends, tags: { debug, extension:mli, file:gamebase.mli, ocaml, ocamldep, package(unix,functory), quiet, traverse }
@@ -14,7 +14,7 @@ ocamlfind ocamldep -package unix,functory -modules game_ia.mli > game_ia.mli.dep
 # Target: game_ia.cmi, tags: { byte, compile, debug, extension:mli, file:game_ia.mli, interf, ocaml, package(unix,functory), quiet, traverse }
 ocamlfind ocamlc -c -g -package unix,functory -o game_ia.cmi game_ia.mli # cached
 # Target: gameplay.cmo, tags: { byte, compile, debug, extension:cmo, extension:ml, file:gameplay.cmo, file:gameplay.ml, implem, ocaml, package(unix,functory), quiet, traverse }
-ocamlfind ocamlc -c -g -package unix,functory -o gameplay.cmo gameplay.ml
+ocamlfind ocamlc -c -g -package unix,functory -o gameplay.cmo gameplay.ml # cached
 # Target: game.ml.depends, tags: { debug, extension:ml, file:game.ml, ocaml, ocamldep, package(unix,functory), quiet, traverse }
 ocamlfind ocamldep -package unix,functory -modules game.ml > game.ml.depends # cached
 # Target: gamebase.ml.depends, tags: { debug, extension:ml, file:gamebase.ml, ocaml, ocamldep, package(unix,functory), quiet, traverse }
@@ -28,7 +28,7 @@ ocamlfind ocamldep -package unix,functory -modules game_ia.ml > game_ia.ml.depen
 # Target: game_ia.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:game_ia.cmx, file:game_ia.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
 ocamlfind ocamlopt -c -g -package unix,functory -o game_ia.cmx game_ia.ml # cached
 # Target: gameplay.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:gameplay.cmx, file:gameplay.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
-ocamlfind ocamlopt -c -g -package unix,functory -o gameplay.cmx gameplay.ml
+ocamlfind ocamlopt -c -g -package unix,functory -o gameplay.cmx gameplay.ml # cached
 # Target: gameplay.native, tags: { debug, dont_link_with, extension:native, file:gameplay.native, link, native, ocaml, package(unix,functory), program, quiet, traverse }
-ocamlfind ocamlopt -linkpkg -g -package unix,functory gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native
+ocamlfind ocamlopt -linkpkg -g -package unix,functory gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native # cached
 # Compilation successful.
