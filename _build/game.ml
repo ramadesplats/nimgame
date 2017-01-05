@@ -27,6 +27,7 @@ let readmove s =
 *)
 let initial =
 	let a = create_matrix 2 10 1 in 
+	(* use only 2 stacks for parallelized demonstration purpose*)
 		Random.self_init ();
 		for i=0 to 1 do 
 			let rand = Random.int 10 in
@@ -105,7 +106,6 @@ let compare p r1 r2 =
 	| _,_,_-> Equal;;
 
 (*return the other state for a player*)
-
 let other_player p =
 	match p with 
 	|Human -> Comput

@@ -16,19 +16,25 @@ ocamlfind ocamlc -c -g -package unix,functory -o game_ia.cmi game_ia.mli # cache
 # Target: gameplay.cmo, tags: { byte, compile, debug, extension:cmo, extension:ml, file:gameplay.cmo, file:gameplay.ml, implem, ocaml, package(unix,functory), quiet, traverse }
 ocamlfind ocamlc -c -g -package unix,functory -o gameplay.cmo gameplay.ml # cached
 # Target: game.ml.depends, tags: { debug, extension:ml, file:game.ml, ocaml, ocamldep, package(unix,functory), quiet, traverse }
-ocamlfind ocamldep -package unix,functory -modules game.ml > game.ml.depends # cached
+ocamlfind ocamldep -package unix,functory -modules game.ml > game.ml.depends
 # Target: gamebase.ml.depends, tags: { debug, extension:ml, file:gamebase.ml, ocaml, ocamldep, package(unix,functory), quiet, traverse }
 ocamlfind ocamldep -package unix,functory -modules gamebase.ml > gamebase.ml.depends # cached
 # Target: gamebase.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:gamebase.cmx, file:gamebase.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
 ocamlfind ocamlopt -c -g -package unix,functory -o gamebase.cmx gamebase.ml # cached
-# Target: game.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:game.cmx, file:game.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
-ocamlfind ocamlopt -c -g -package unix,functory -o game.cmx game.ml # cached
 # Target: game_ia.ml.depends, tags: { debug, extension:ml, file:game_ia.ml, ocaml, ocamldep, package(unix,functory), quiet, traverse }
 ocamlfind ocamldep -package unix,functory -modules game_ia.ml > game_ia.ml.depends # cached
+# Target: game.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:game.cmx, file:game.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
+ocamlfind ocamlopt -c -g -package unix,functory -o game.cmx game.ml
++ ocamlfind ocamlopt -c -g -package unix,functory -o game.cmx game.ml
+File "game.ml", line 34, characters 3-20:
+Warning 10: this expression should have type unit.
 # Target: game_ia.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:game_ia.cmx, file:game_ia.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
-ocamlfind ocamlopt -c -g -package unix,functory -o game_ia.cmx game_ia.ml # cached
+ocamlfind ocamlopt -c -g -package unix,functory -o game_ia.cmx game_ia.ml
++ ocamlfind ocamlopt -c -g -package unix,functory -o game_ia.cmx game_ia.ml
+File "game_ia.ml", line 114, characters 6-30:
+Warning 10: this expression should have type unit.
 # Target: gameplay.cmx, tags: { compile, debug, extension:cmx, extension:ml, file:gameplay.cmx, file:gameplay.ml, implem, native, ocaml, package(unix,functory), quiet, traverse }
-ocamlfind ocamlopt -c -g -package unix,functory -o gameplay.cmx gameplay.ml # cached
+ocamlfind ocamlopt -c -g -package unix,functory -o gameplay.cmx gameplay.ml
 # Target: gameplay.native, tags: { debug, dont_link_with, extension:native, file:gameplay.native, link, native, ocaml, package(unix,functory), program, quiet, traverse }
-ocamlfind ocamlopt -linkpkg -g -package unix,functory gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native # cached
+ocamlfind ocamlopt -linkpkg -g -package unix,functory gamebase.cmx game.cmx game_ia.cmx gameplay.cmx -o gameplay.native
 # Compilation successful.

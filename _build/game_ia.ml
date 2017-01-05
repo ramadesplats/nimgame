@@ -71,7 +71,7 @@ let rec best_move_cache state =
         in
         match result s2 with
           | Some res -> aux s t ((Some h, res)::moves)
-          | None -> aux s t ((Some h, snd (best_move s2))::moves)
+          | None -> aux s t ((Some h, snd (best_move_cache s2))::moves)
     in
     match r with
       | Some res ->
@@ -111,7 +111,7 @@ let best_move_parallelized state =
     match map_fold_ac ~f:zemap ~fold:zefold None moves with
       | None -> None
       | Some(move, result) -> Printf.printf "######SOLUTION-FOUND######\n%!" ;
-      Unix.select [] [] [] 1.0  ; Some(move)
+      Unix.select [] [] [] 2.0  ; Some(move)
 
 
 (*map : ('a -> 'b) -> 'a list -> 'b list

@@ -22,7 +22,8 @@ let ask_move state =
       end
     else Some mov
 
-(* Get the move from the IA. *)
+(* Get the move from the IA.
+*Uncomment if needed*)
 (*let ia_move state =
   let (mov, _) = Game_ia.best_move state in
     match mov with

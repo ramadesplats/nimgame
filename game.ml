@@ -23,11 +23,10 @@ let readmove s =
 
 (* Create a game with random number of matchstick for each stack
 * Not always the same player that start the game
-* let a = create_matrix 5 10 1 in
 *)
 let initial =
-	let a = create_matrix 2 10 1 in 
-	(* use only 2 stacks for demonstration purpose*)
+	let a = create_matrix 5 10 1 in 
+	(* use only 2 stacks for parallelized demonstration purpose*)
 		Random.self_init ();
 		for i=0 to 1 do 
 			let rand = Random.int 10 in
@@ -42,7 +41,8 @@ let turn = function
 
 (* return true is the move is valid *)
 let is_valid (a,_) (b,c) =
-	Printf.printf "a : %s b : %d c : %d%!\n" (matrix2s a string_of_int) b c;
+	(* Put this print to show what move are tested before being played
+		*Printf.printf "a : %s b : %d c : %d%!\n" (matrix2s a string_of_int) b c;*)
 	b<=4 && b>=0 && c<=10 && c>0 &&
 	let count=Array.fold_left (fun x y -> if y=1 then x+1 else x) 0 (a.(b)) in
 	(*Printf.printf "count : %d%!\n" count;*)
@@ -106,7 +106,6 @@ let compare p r1 r2 =
 	| _,_,_-> Equal;;
 
 (*return the other state for a player*)
-
 let other_player p =
 	match p with 
 	|Human -> Comput
